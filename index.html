@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウブ♡ぶいルールブック</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./icons/GTA_.ico">
+
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="dot">R</div>
+                <div>
+                    <h1>ルール一覧</h1>
+                    <div class="desc">たくさんのルールを素早く検索・フィルタできます</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="search">
+                    <input id="searchInput" type="search" placeholder="検索（キーワード）..." />
+                    <button id="clearBtn" class="btn ghost">×</button>
+                </div>
+
+                <div class="tags" id="tags"></div>
+
+                <div style="display:flex;gap:8px;margin-top:8px">
+                    <button id="expandAll" class="btn">展開</button>
+                    <button id="collapseAll" class="btn ghost">閉じる</button>
+                </div>
+
+                <div style="margin-top:12px">
+                    <span style="color:var(--muted);font-size:13px">
+                        表示件数: <span id="count">0</span>
+                    </span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main" id="main">
+            <div class="topbar">
+                <div>
+                    <h2 style="margin:0;font-size:18px">全ルール</h2>
+                    <div class="stats">カテゴリ / タグで絞り込み可能</div>
+                </div>
+                <div class="controls-compact">
+                    <button id="copyAll" class="btn ghost">全コピー</button>
+                    <button id="downloadJson" class="btn">JSON保存</button>
+                </div>
+            </div>
+
+            <section class="list" id="ruleList">
+                <!-- 全体 -->
+                <article class="rule" data-category="基本的な心構え・マナー" data-tags="全体,マナー,行動,交流,名前" id="rule-1">
+                    <h3>【全プレイヤー】基本的な心構え・マナー</h3>
+                    <div class="meta">
+                        <div class="badge">基本的な心構え・マナー</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, マナー, 行動, 交流, 名前</div>
+                    </div>
+                    <div class="content">
+                        サーバー内で活動する上での心構えや交流、禁止行為に関する基本ルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>ストリーマーとして常識ある行動を心がけること。</li>
+                            <li>言動・行動に責任を持ち、ルールを守ること。</li>
+                            <li>サーバー内で起こったことはサーバー外に持ち出さない（全てRPとして理解する）。</li>
+                            <li>公序良俗に反するキャラクターネーム禁止（メインネームは活動名で統一）。</li>
+                            <li>過度なストーカー行為、セクハラ行為は禁止。</li>
+                            <li>他プレイヤーと交流を大切にし、街ではマイクをオンにして会話すること。</li>
+                            <li>ディスコードのフレンド申請は双方合意の上で行うこと。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="トラブル・違反対応" data-tags="全体,違反,通報,バグ,報告" id="rule-2">
+                    <h3>【全プレイヤー】トラブル・違反対応</h3>
+                    <div class="meta">
+                        <div class="badge">トラブル・違反対応</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 違反, 通報, バグ, 報告</div>
+                    </div>
+                    <div class="content">
+                        サーバー内で発生する問題や違反行為への対応方法に関するルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>サーバー内の問題はRPで解決すること。</li>
+                            <li>明らかなルール違反は運営に報告（クリップ必須、その場で直接指摘禁止）。</li>
+                            <li>バグやグリッチは運営に報告、故意利用は禁止（重い処分あり）。</li>
+                            <li>他プレイヤーの配信やアーカイブを利用したゴースティングは禁止。</li>
+                            <li>外部ツールを使った通話・情報共有は禁止（例外：日程調整や犯罪場所メモのみ可）。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="チャット・コマンド利用制限" data-tags="全体,チャット,コマンド,禁止" id="rule-3">
+                    <h3>【全プレイヤー】チャット・コマンド利用制限</h3>
+                    <div class="meta">
+                        <div class="badge">チャット・コマンド利用制限</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, チャット, コマンド, 禁止</div>
+                    </div>
+                    <div class="content">
+                        サーバー内で使用禁止となっているチャットやコマンドに関するルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>テキストチャットおよび /me コマンド禁止。</li>
+                            <li>/carry の悪用禁止（他プレイヤーの妨害行為）。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="アバター・キャラクター制限" data-tags="全体,アバター,スキン,キャラクター" id="rule-4">
+                    <h3>【全プレイヤー】アバター・キャラクター制限</h3>
+                    <div class="meta">
+                        <div class="badge">アバター・キャラクター制限</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, アバター, スキン, キャラクター</div>
+                    </div>
+                    <div class="content">
+                        使用可能なアバターやキャラクターに関する制限。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>初期アバター / NPCスキン / 透明スキン禁止。</li>
+                            <li>プレイヤーは1人1キャラのみ。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="戦闘・コンバット関連" data-tags="全体,戦闘,コンバット,禁止" id="rule-5">
+                    <h3>【全プレイヤー】戦闘・コンバット関連ルール</h3>
+                    <div class="meta">
+                        <div class="badge">戦闘・コンバット関連</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 戦闘, コンバット, 禁止</div>
+                    </div>
+                    <div class="content">
+                        コンバットログや戦闘時のルール、装備制限について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>コンバットログはできる限り避ける。</li>
+                            <li>やむを得ない場合は全体チャットで報告後退出。</li>
+                            <li>ダウン・大ダウン時は医療施設で相応の代金を支払う。</li>
+                            <li>犯罪中のコンバットログは次回IN時に指名手配30分＋必要に応じて医療費支払い。</li>
+                            <li>外部レティクル禁止（GTAデフォルトのみ使用可）。</li>
+                            <li>警察・救急隊の犯罪行為禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="リログ・リスポーン関連" data-tags="全体,リログ,リスポーン,移動" id="rule-6">
+                    <h3>【全プレイヤー】リログ・リスポーン関連</h3>
+                    <div class="meta">
+                        <div class="badge">リログ・リスポーン関連</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, リログ, リスポーン, 移動</div>
+                    </div>
+                    <div class="content">
+                        移動目的での再接続やリスポーンに関する禁止事項。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>移動手段としてのリログ（再接続）、リスポーン（ダウン後E長押し）禁止。</li>
+                            <li>リスポーン位置変更は「最後の位置」以外禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="定期再起動時の制限" data-tags="全体,再起動,犯罪禁止" id="rule-7">
+                    <h3>【全プレイヤー】定期再起動時の制限</h3>
+                    <div class="meta">
+                        <div class="badge">定期再起動時の制限</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 再起動, 犯罪禁止</div>
+                    </div>
+                    <div class="content">
+                        サーバー定期再起動前後の犯罪行為に関する制限。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>サーバー定期再起動の前後30分は犯罪禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="職業関連" data-tags="全体,職業,ジョブ,市民,犯罪" id="rule-8">
+                    <h3>【全プレイヤー】職業関連ルール</h3>
+                    <div class="meta">
+                        <div class="badge">職業関連</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 職業, ジョブ, 市民, 犯罪</div>
+                    </div>
+                    <div class="content">
+                        就職や職業制限、勤務状態の切り替えに関するルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>退勤時は必ずジョブの勤務状態をオフにする。</li>
+                            <li>白市民（犯罪歴なし）：メイン職＋副職2つ。</li>
+                            <li>黒市民（犯罪歴あり）：メイン職＋副職1つ。</li>
+                            <li>タクシーは副職として利用可能（違法薬物ヒントはなし）。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="ダウン・大ダウン時の行動制限" data-tags="全体,ダウン,大ダウン,行動制限" id="rule-9">
+                    <h3>【全プレイヤー】ダウン・大ダウン時の行動制限</h3>
+                    <div class="meta">
+                        <div class="badge">ダウン・大ダウン時の行動制限</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, ダウン, 大ダウン, 行動制限</div>
+                    </div>
+                    <div class="content">
+                        ダウン・大ダウン時の行動制限や救助要請の手順。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>ダウン時は包帯延命禁止、無線連打禁止（場所通知は可）、エモート禁止、日常会話は可（有利情報は不可）。</li>
+                            <li>大ダウン時は情報共有禁止、無線連打禁止（場所通知は可）、エモート禁止。</li>
+                            <li>大ダウン状態で5分経過 → 声で救助要請。</li>
+                            <li>10分経過しても救助なし → 運営サポへ連絡。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="犯罪・プレイヤーロブ関連" data-tags="全体,犯罪,ロブ,ギャング,NPC" id="rule-10">
+                    <h3>【全プレイヤー】犯罪・プレイヤーロブ関連</h3>
+                    <div class="meta">
+                        <div class="badge">犯罪・プレイヤーロブ関連</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 犯罪, ロブ, ギャング, NPC</div>
+                    </div>
+                    <div class="content">
+                        犯罪行為やプレイヤーロブの制限、NPCへの行動について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>基本的にプレイヤーロブは禁止。</li>
+                            <li>ギャング同士のみ可（お金・携帯は禁止、補填なし）。</li>
+                            <li>必要以上のNPC殺害禁止（サーバー負荷防止）。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="救急隊への通知" data-tags="全体,救急隊,通知,連打禁止" id="rule-11">
+                    <h3>【全プレイヤー】救急隊への通知</h3>
+                    <div class="meta">
+                        <div class="badge">救急隊への通知</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 救急隊, 通知, 連打禁止</div>
+                    </div>
+                    <div class="content">
+                        救急隊への通知回数や注意事項について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>救急隊への通知は3分に1回程度。</li>
+                            <li>連打は全通知が流れ混乱するため禁止。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="禁止車両" data-tags="全体,車両,武装,飛行,禁止" id="rule-12">
+                    <h3>【全プレイヤー】禁止車両</h3>
+                    <div class="meta">
+                        <div class="badge">禁止車両</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, 車両, 武装, 飛行, 禁止</div>
+                    </div>
+                    <div class="content">
+                        サーバー内で使用禁止となっている車両の種類。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>武装が可能となる車両。</li>
+                            <li>殺傷能力のある車両。</li>
+                            <li>飛行機能のある車両（ヘリは可）。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="禁止カスタム" data-tags="全体,カスタム,武装,ヘリ,禁止" id="rule-13">
+                    <h3>【全プレイヤー】禁止カスタム</h3>
+                    <div class="meta">
+                        <div class="badge">禁止カスタム</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, カスタム, 武装, ヘリ, 禁止</div>
+                    </div>
+                    <div class="content">
+                        車両やヘリのカスタムに関する禁止事項。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>武装ができるカスタム（防弾はタイヤのみ可）。</li>
+                            <li>殺傷能力が追加できるカスタム。</li>
+                            <li>ヘリのカスタム（アーマーのみ可）。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="ステッカー・デカール利用ルール" data-tags="全体,ステッカー,デカール,施設,申請" id="rule-14">
+                    <h3>【全プレイヤー】ステッカー利用ルール</h3>
+                    <div class="meta">
+                        <div class="badge">ステッカー利用ルール</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 全体, ステッカー, 施設, 申請</div>
+                    </div>
+                    <div class="content">
+                        ステッカーの利用、申請、設置に関するルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>救急・警察・メカニックは施設が大きくメンバー数が多いため、一人1枚まで可。</li>
+                            <li>自身の陣地にのみ貼ること。</li>
+                            <li>乗り物への貼付はメカニックに依頼すること（1台につき2枚まで可）。</li>
+                            <li>メカニック職ならメカニック施設、警察なら警察施設など所属施設に貼ること。</li>
+                            <li><code>/decals</code> でステッカーメニューを開く。</li>
+                            <li><code>/clear_graffiti</code> でステッカー削除。</li>
+                            <li>上記コマンドは T を押して記入後エンターで実行。</li>
+                            <li>個人的なステッカー申請は1人2枚まで、事前申請必須。</li>
+                            <li>反映まで1～2日かかる場合あり。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <!-- /全体 -->
+                <!-- メカニック -->
+
+                <article class="rule" data-category="修理" data-tags="メカニック,修理,料金,タイヤ" id="rule-mechanic-1">
+                    <h3>【メカニック】修理料金・規定</h3>
+                    <div class="meta">
+                        <div class="badge">修理</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:メカニック, 修理, 料金, タイヤ</div>
+                    </div>
+                    <div class="content">
+                        修理に関する料金と規定について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>1カ所10万（※タイヤは4つまとめて10万）</li>
+                            <li>最初の一週間のみ1カ所5万（※タイヤは４つひとまとめで5万）</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="出張修理" data-tags="メカニック,出張,修理,料金" id="rule-mechanic-2">
+                    <h3>【メカニック】出張修理＋インパウンド</h3>
+                    <div class="meta">
+                        <div class="badge">出張修理</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:メカニック, 出張, 修理, 料金</div>
+                    </div>
+                    <div class="content">
+                        出張修理の料金規定について。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>出張代<br>近郊 20〜40万<br>遠方 40〜70万<br>（向かうことの料金であり、集団修理の場合は代表者1回のみ支払い）</li>
+                            <li>ダクトテープは1つ5万で販売</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="カスタマイズ" data-tags="メカニック,カスタマイズ,料金,パーツ" id="rule-mechanic-3">
+                    <h3>【メカニック】カスタマイズ料金・規定</h3>
+                    <div class="meta">
+                        <div class="badge">カスタマイズ</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:メカニック, カスタマイズ, 料金, パーツ</div>
+                    </div>
+                    <div class="content">
+                        カスタマイズに関する料金と内容。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>ターボ 200万</li>
+                            <li>アーマー 200万</li>
+                            <li>サス、ミッション、ブレーキ 1レベルごとに25万</li>
+                            <li>パーツ変更 1カ所10万</li>
+                            <li>ニトロ 初回搭載100万、補充50万</li>
+                            <li>カラー変更 最低料金50万＋依頼料</li>
+                            <li>エンジン ティア1〜ティア5（詳細別途）</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="スタンス" data-tags="メカニック,スタンス,見た目,車高,禁止" id="rule-mechanic-4">
+                    <h3>【メカニック】外観について</h3>
+                    <div class="meta">
+                        <div class="badge">外観</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:メカニック, スタンス, 見た目, 車高, 禁止</div>
+                    </div>
+                    <div class="content">
+                        車両の外観に関するルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>現実味のない見た目は禁止（迷ったら上司に確認してください）</li>
+                            <li>犯罪者と警察の車は特に禁止項目に注意</li>
+                            <li>ホイール・タイヤのサイズを小さくする行為は禁止（犯罪に使われない車のみ現実的ならOK）</li>
+                            <li>タイヤ間の距離を狭める行為禁止（犯罪に使われない車のみ現実的ならOK）</li>
+                            <li>八の字タイヤや現実的な車高調整は可能</li>
+                            <li>タイヤの厚みも現実的なサイズに調整可能</li>
+                            <li>1回の対応につき一律50万</li>
+                            <li>運営から認可されたステッカーのみ対応可能</li>
+                            <li>ステッカーは1枚50万の請求で対応</li>
+                            <li>車体1台につきステッカーは2枚まで。超過は禁止</li>
+                            <p><strong>【車に貼るステッカーについて】</strong><br>
+                                ※ステッカーは車の所有者しか貼ることができません⚠️<br>
+                                そのため<br>
+                                ①Vehicle Spray Canをお客さんに渡して、ステッカーの貼り方を教えてあげてください。<br>
+                                ②貼り終わったら上のアイテムを返してもらって、ステッカーの料金を請求してください！
+                            </p>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="禁止事項" data-tags="メカニック,禁止,車両,救急車,武装,アイテム" id="rule-mechanic-5">
+                    <h3>【メカニック】禁止事項</h3>
+                    <div class="meta">
+                        <div class="badge">禁止事項</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:メカニック, 禁止, 警察車両, 救急隊車両, 武装, アイテム</div>
+                    </div>
+                    <div class="content">
+                        メカニックにおける禁止ルール。
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ol>
+                            <li>警察車両や救急隊車両について、車体が判別できなくなるような変更は禁止。</li>
+                            <li>メカニック以外でお金を稼ぐ場合（アルバイトやマイニング等）は退勤してください。</li>
+                            <li>メカニック専用アイテムの市民への販売禁止。</li>
+                            <li>退勤時にメカニック工具の使用は禁止（発覚時ペナルティあり）。</li>
+                            <li>車両への武装や殺傷能力のあるカスタムは禁止。</li>
+                            <li>お金はしっかり請求してください。</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <!-- /メカニック -->
+                <!-- 飲食 -->
+
+                <article class="rule" data-category="就職・雇用" data-tags="飲食,就職, 店長, 副店長" id="rule-1">
+                    <h3>【飲食】就職・雇用ルール</h3>
+                    <div class="meta">
+                        <div class="badge">就職・雇用</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:飲食, 就職, 店長, 副店長</div>
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ul>
+                            <li>黒市民でも就職可能ではあるが、発覚した場合はその店舗の店長の判断に従うこと。</li>
+                            <li>店長、副店長の役職あり ※これ以上増やしても問題ないです！</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="金銭・売買" data-tags="飲食,金銭, 請求, まかない, 商品価格" id="rule-2">
+                    <h3>【飲食】金銭・売買ルール</h3>
+                    <div class="meta">
+                        <div class="badge">金銭・売買</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:飲食, 金銭, 請求, まかない, 商品価格</div>
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ul>
+                            <li>お金はしっかり請求しましょう！</li>
+                            <li>まかない禁止(飲食チーム内でも金銭のやり取りはしましょう！)</li>
+                            <li>【商品の値段】商品の相場は50000円とする。</li>
+                            <li>特殊効果商品は運営に相談してください。</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="開店・営業" data-tags="飲食,開店, SNS, パーティー, 売り場" id="rule-3">
+                    <h3>【飲食】開店・営業ルール</h3>
+                    <div class="meta">
+                        <div class="badge">開店・営業</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ:飲食, 開店, SNS, パーティー, 売り場</div>
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ul>
+                            <li>開店したらゲーム内のSNS（パーティー）で開店している旨を伝える。</li>
+                            <li>開店したら店内に店員がいるようにしておく。</li>
+                            <li>お店を離れて売りに行く場合にはその旨もツイートで報告してください。</li>
+                        </ul>
+
+                        <p>～パーティーの導入方法～</p>
+                        <ol>
+                            <li>スマホのアプリを開く</li>
+                            <li>パーティーをインストール</li>
+                            <li>ホーム画面にあるので使用してください</li>
+                        </ol>
+                    </div>
+                </article>
+
+                <article class="rule" data-category="飲食販売制限" data-tags="飲食, 購入制限, 販売" id="rule-4">
+                    <h3>【飲食】物の販売制限</h3>
+                    <div class="meta">
+                        <div class="badge">販売制限</div>
+                        <div>更新: 2025-8-10</div>
+                        <div class="muted">タグ: 飲食, 購入制限, 販売</div>
+                    </div>
+                    <div class="actions">
+                        <button class="small" data-action="toggle">詳しく</button>
+                        <button class="small" data-action="copy">コピー</button>
+                        <button class="small" data-action="anchor">リンク</button>
+                    </div>
+                    <div class="more hidden">
+                        <ul>
+                            <li>飲食の購入制限を設けます。</li>
+                            <li>各10個ずつまで(1回の来店で種類関係なく飲み物10個、食べ物10個)。</li>
+                            <li>可能な限り売った人を覚えておいて連続で売らないようにしてください。</li>
+                            <li>いっぱいほしいって言われても他の飲食で買ってもらうように話すなどしてもらえるとありがたいです。</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!--/ 飲食 -->
+
+            </section>
+
+            <div id="emptyState" class="empty hidden">該当するルールが見つかりません。</div>
+        </main>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
