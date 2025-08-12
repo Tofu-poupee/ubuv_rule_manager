@@ -10,13 +10,21 @@ const emptyState = $('#emptyState');
 let activeTag = '__all';
 
 const tagCategories = {
-    "ジョブ別タグ": ["全体","メカニック", "飲食"],
+    "全体": [],
+    "救急隊": [],
+    "禁止": [],
+    "その他タグ": []
 };
 
 function buildTags() {
     tagsWrap.innerHTML = '';
 
-    Object.entries(tagCategories).forEach(([cat, tags]) => {
+    // 明示的に順番を決めて回す
+    const order = ["全体", "救急隊", "禁止", "その他タグ"];
+    order.forEach(cat => {
+        const tags = tagCategories[cat];
+        if (!tags || tags.length === 0) return;
+
         const catDiv = document.createElement('div');
         catDiv.className = 'category';
 
@@ -50,6 +58,35 @@ function buildTags() {
     });
 }
 
+function buildTagsFromRules() {
+    const prohibitSet = new Set();
+    const allSet = new Set();
+    const policeSet = new Set();
+    const otherSet = new Set();
+
+    $$('.rule').forEach(rule => {
+        const tagsStr = rule.dataset.tags || '';
+        const tags = tagsStr.split(',').map(t => t.trim()).filter(t => t);
+
+        if (tags.includes('禁止')) {
+            tags.forEach(t => prohibitSet.add(t));
+        } else if (tags.includes('全体')) {
+            tags.forEach(t => allSet.add(t));
+        } else if (tags.includes('警察')) {
+            tags.forEach(t => policeSet.add(t));
+        } else {
+            tags.forEach(t => otherSet.add(t));
+        }
+    });
+
+    tagCategories["禁止"] = Array.from(prohibitSet).sort();
+    tagCategories["全体"] = Array.from(allSet).sort();
+    tagCategories["警察"] = Array.from(policeSet).sort();
+    tagCategories["その他タグ"] = Array.from(otherSet).sort();
+
+    buildTags();
+}
+
 function filterRules() {
     const q = searchInput.value.toLowerCase();
     let visible = 0;
@@ -70,7 +107,6 @@ function filterRules() {
     countEl.textContent = visible;
     emptyState.classList.toggle('hidden', visible > 0);
 
-    // 検索時は該当カテゴリだけ展開
     if (q) {
         $$('.category').forEach(cat => {
             const hasMatch = Array.from(cat.querySelectorAll('.tag')).some(tagBtn =>
@@ -137,5 +173,5 @@ $('#downloadJson').addEventListener('click', () => {
     a.click();
 });
 
-buildTags();
+buildTagsFromRules();
 filterRules();
