@@ -4,13 +4,18 @@
 }
 
 :root {
-    --accent: #e07b39;       /* オレンジメイン */
-    --accent-2: #f9d9b9;    /* オレンジ薄め */
-    --bg: #fff6ec;          /* 背景薄オレンジ */
-    --card: #fff9f2;        /* カード背景 */
+    --accent: #e07b39;
+    /* オレンジメイン */
+    --accent-2: #f9d9b9;
+    /* オレンジ薄め */
+    --bg: #fff6ec;
+    /* 背景薄オレンジ */
+    --card: #fff9f2;
+    /* カード背景 */
     --gap: 18px;
     --glass: rgba(240, 190, 130, 0.5);
-    --muted: #8a5a28;       /* 落ち着いたブラウン系 */
+    --muted: #8a5a28;
+    /* 落ち着いたブラウン系 */
     --radius: 14px;
     --shadow: 0 6px 18px rgba(224, 123, 57, 0.3);
     --max-width: 1100px;
@@ -482,7 +487,8 @@ a.inline:hover {
 
 .header-span span {
     border-bottom: #a84e00 1px solid;
-    color: #b54a00;
+    color: #062bff;
+    /* text-shadow: 0px 0px 10px rgb(0, 0, 0); */
     font-weight: 700;
 }
 
