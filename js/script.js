@@ -11,7 +11,8 @@ let activeTag = '__all';
 
 const tagCategories = {
     "全体": [],
-    "救急隊": [],
+    "飲食": [],
+    "メカニック": [],
     "禁止": [],
     "その他タグ": []
 };
@@ -19,8 +20,7 @@ const tagCategories = {
 function buildTags() {
     tagsWrap.innerHTML = '';
 
-    // 明示的に順番を決めて回す
-    const order = ["全体", "救急隊", "禁止", "その他タグ"];
+    const order = ["全体", "飲食", "メカニック", "禁止", "その他タグ"];
     order.forEach(cat => {
         const tags = tagCategories[cat];
         if (!tags || tags.length === 0) return;
@@ -61,7 +61,8 @@ function buildTags() {
 function buildTagsFromRules() {
     const prohibitSet = new Set();
     const allSet = new Set();
-    const policeSet = new Set();
+    const foodSet = new Set();
+    const mechanicSet = new Set();
     const otherSet = new Set();
 
     $$('.rule').forEach(rule => {
@@ -70,18 +71,24 @@ function buildTagsFromRules() {
 
         if (tags.includes('禁止')) {
             tags.forEach(t => prohibitSet.add(t));
-        } else if (tags.includes('全体')) {
-            tags.forEach(t => allSet.add(t));
-        } else if (tags.includes('警察')) {
-            tags.forEach(t => policeSet.add(t));
-        } else {
-            tags.forEach(t => otherSet.add(t));
         }
+        if (tags.includes('全体')) {
+            tags.forEach(t => allSet.add(t));
+        }
+        if (tags.includes('飲食')) {
+            tags.forEach(t => foodSet.add(t));
+        }
+        if (tags.includes('メカニック')) {
+            tags.forEach(t => mechanicSet.add(t));
+        }
+        // その他タグは禁止・全体・飲食・メカニックに含まれないタグ
+        tags.filter(t => !['禁止', '全体', '飲食', 'メカニック'].includes(t)).forEach(t => otherSet.add(t));
     });
 
     tagCategories["禁止"] = Array.from(prohibitSet).sort();
     tagCategories["全体"] = Array.from(allSet).sort();
-    tagCategories["警察"] = Array.from(policeSet).sort();
+    tagCategories["飲食"] = Array.from(foodSet).sort();
+    tagCategories["メカニック"] = Array.from(mechanicSet).sort();
     tagCategories["その他タグ"] = Array.from(otherSet).sort();
 
     buildTags();
